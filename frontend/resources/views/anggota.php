@@ -1,7 +1,7 @@
     <!-- Profil Anggota -->
     <section id="anggota" class="mb-12">
-        <h2 class="text-2xl font-bold mb-4 text-green-800">Profil Anggota Kelurahan Riko</h2>
-        <p class="text-gray-700 mb-6">Kelurahan Riko didukung oleh para staf dan pejabat yang berdedikasi untuk melayani masyarakat dengan integritas dan semangat.</p>
+        <h2 class="text-2xl font-bold mb-4 text-green-800 text-center">Profil Anggota Kelurahan Riko</h2>
+        <p class="text-gray-700 mb-6 text-center">Kelurahan Riko didukung oleh para staf dan pejabat yang berdedikasi untuk melayani masyarakat dengan integritas dan semangat.</p>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             <?php foreach ($anggota as $member): ?>
