@@ -32,7 +32,7 @@
 
             <div>
                 <h4 class="text-yellow-400 font-bold mb-3">Lokasi Map</h4>
-                <iframe src="<?= e($peta_) ?>" width="100%" height="150"
+                <iframe src="<?= e($peta_embed) ?>" width="100%" height="150"
                         style="border:0;" allowfullscreen loading="lazy"></iframe>
             </div>
         </div>
