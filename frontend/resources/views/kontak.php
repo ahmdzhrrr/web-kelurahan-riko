@@ -1,4 +1,4 @@
-    <!-- Kontak -->
+    <!-- Kontak
     <section id="kontak" class="mb-12">
         <h2 class="text-2xl font-bold mb-4 text-green-800">Hubungi Kami</h2>
         <div class="bg-white rounded-lg shadow-md p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -15,4 +15,4 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
