@@ -1,6 +1,6 @@
     <!-- Visi & Misi -->
     <section id="visi-misi" class="mb-12">
-        <h2 class="mb-6 text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Visi & Misi</h2>
+        <h2 class="mb-6 text-center text-3xl font-bold tracking-tight text-green-800 sm:text-4xl">Visi & Misi</h2>
 
         <div class="relative overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200/80">
             <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-emerald-50 pointer-events-none"></div>

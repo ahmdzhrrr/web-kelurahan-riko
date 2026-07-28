@@ -7,10 +7,10 @@
                     <img src="<?= e($profil['foto']) ?>" alt="Kantor <?= e($site['nama']) ?>" class="h-72 w-full object-cover md:h-full">
                 </div>
                 <div class="md:col-span-3 p-6 sm:p-8 lg:p-10">
-                    <span class="inline-flex items-center rounded-full bg-green-100 px-4 py-1 text-xs font-semibold tracking-wide text-green-800">
+                    <!-- <span class="inline-flex items-center rounded-full bg-green-100 px-4 py-1 text-xs font-semibold tracking-wide text-green-800">
                         Profil Kelurahan
-                    </span>
-                    <h2 class="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"><?= e($profil['judul']) ?></h2>
+                    </span> -->
+                    <h2 class="mt-4 text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"><?= e($profil['judul']) ?></h2>
                     <div class="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-green-700 to-emerald-500"></div>
                     <p class="mt-6 text-base leading-8 text-slate-700 sm:text-lg">
                         <?= e($profil['isi']) ?>
