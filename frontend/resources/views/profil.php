@@ -12,7 +12,7 @@
                     </span> -->
                     <h2 class="mt-4 text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"><?= e($profil['judul']) ?></h2>
                     <div class="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-green-700 to-emerald-500"></div>
-                    <p class="mt-6 text-base leading-8 text-slate-700 sm:text-lg">
+                    <p class="mt-6 text-base leading-8 text-s   late-700 sm:text-lg">
                         <?= e($profil['isi']) ?>
                     </p>
                     <!-- <div class="mt-8 flex flex-wrap gap-3 text-sm text-slate-600">
