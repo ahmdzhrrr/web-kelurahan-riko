@@ -3,9 +3,9 @@
         <div class="mx-auto max-w-6xl">
             <div class="mb-6 text-center">
                 <h2 class="text-3xl font-bold tracking-tight text-green-800 sm:text-4xl">Profil Anggota Kelurahan Riko</h2>
-                <p class="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                <!-- <p class="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
                     Kelurahan Riko didukung oleh para staf dan pejabat yang berdedikasi untuk melayani masyarakat dengan integritas dan semangat.
-                </p>
+                </p> -->
             </div>
 
             <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5 lg:gap-6">

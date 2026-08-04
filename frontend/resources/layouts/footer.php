@@ -4,7 +4,7 @@
     <footer class="bg-gradient-to-b from-green-900 to-green-950 text-white mt-10 px-6 sm:px-10 lg:px-16 py-14">
         <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
             <div class="space-y-4">
-                <img src="<?= e($site['logo']) ?>" alt="Logo <?= e($site['nama']) ?>" class="w-20 rounded-md shadow-lg ring-1 ring-white/10">
+                <img src="<?= e($site['logo']) ?>" alt="Logo <?= e($site['nama']) ?>" class="w-20 rounded-md">
                 <p class="leading-6 text-white/90"><?= e($site['salam']) ?></p>
             </div>
 
