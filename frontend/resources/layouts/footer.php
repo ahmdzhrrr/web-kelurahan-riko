@@ -23,7 +23,7 @@
                 </ul>
             </div>
 
-            <div class="space-y-4">
+            <div id="kontak" class="space-y-4 scroll-mt-24">
                 <h4 class="text-yellow-300 font-bold text-base tracking-wide">Hubungi Kami</h4>
                 <div class="space-y-2 leading-6 text-white/90">
                     <p><?= e($site['alamat']) ?></p>
