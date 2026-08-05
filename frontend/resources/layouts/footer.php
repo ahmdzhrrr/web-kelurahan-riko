@@ -5,7 +5,7 @@
         <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
             <div class="space-y-4">
                 <img src="<?= e($site['logo']) ?>" alt="Logo <?= e($site['nama']) ?>" class="w-20 rounded-md">
-                <p class="leading-6 text-white/90"><?= e($site['salam']) ?></p>
+                <p class="leading-6 text-white/90 italic"><?= e($site['salam']) ?></p>
             </div>
 
             <div class="space-y-4">
