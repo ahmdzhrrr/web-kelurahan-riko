@@ -63,3 +63,15 @@ install dulu (Windows: https://windows.php.net/download/, lalu tambahkan ke PATH
   cocok di file zip yang dikirim, jadi ditampilkan pakai avatar placeholder
   daripada memakai foto orang lain yang salah (ini terjadi di draft HTML lama).
 - File Windows seperti `desktop.ini` dan `*.lnk` dari zip asli tidak disertakan karena bukan bagian dari website.
+
+
+# Database
+
+Jalankan file berikut secara berurutan:
+
+1. migration.sql
+2. seed.sql
+
+Database:
+
+webkel_riko
