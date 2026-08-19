@@ -21,6 +21,11 @@ abstract class Model
         $this->db = Database::getInstance();
     }
 
+    public function getDatabase(): Database
+    {
+        return $this->db;
+    }
+
     /**
      * Menentukan tipe data mysqli.
      */

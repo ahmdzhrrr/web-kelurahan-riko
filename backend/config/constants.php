@@ -11,3 +11,5 @@ define('PUBLIC_PATH', ROOT_PATH . '/public');
 define('STORAGE_PATH', BACKEND_PATH . '/storage');
 
 define('UPLOAD_PATH', STORAGE_PATH . '/uploads');
+
+define('ASSET_URL', '/assets');

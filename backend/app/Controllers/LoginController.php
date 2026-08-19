@@ -12,13 +12,19 @@ use App\Models\UserModel;
 
 class LoginController extends Controller
 {
+    /**
+     * Halaman login
+     */
     public function index(): void
     {
         Auth::guest();
 
-        $this->view('admin/auth/login');
+        $this->guestView('admin/auth/login');
     }
 
+    /**
+     * Proses login
+     */
     public function login(): void
     {
         Auth::guest();
@@ -40,14 +46,24 @@ class LoginController extends Controller
                 $validator->firstError()
             );
 
-            Response::redirect('/admin/login');
+            Response::redirect('/superadmin/login');
         }
+
+        $username = trim(
+            Request::input('username')
+        );
+
+        $password = Request::input('password');
 
         $userModel = new UserModel();
 
-        $user = $userModel->findByUsername(
-            Request::input('username')
-        );
+        $user = $userModel->findByUsername($username);
+
+        /*
+        |--------------------------------------------------------------------------
+        | User tidak ditemukan
+        |--------------------------------------------------------------------------
+        */
 
         if (!$user) {
 
@@ -55,8 +71,14 @@ class LoginController extends Controller
                 'Username atau password salah.'
             );
 
-            Response::redirect('/admin/login');
+            Response::redirect('/superadmin/login');
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Pastikan akun aktif
+        |--------------------------------------------------------------------------
+        */
 
         if (!$user['is_active']) {
 
@@ -64,20 +86,44 @@ class LoginController extends Controller
                 'Akun Anda tidak aktif.'
             );
 
-            Response::redirect('/admin/login');
+            Response::redirect('/superadmin/login');
         }
 
-        if (!password_verify(
-            Request::input('password'),
-            $user['password']
-        )) {
+        /*
+        |--------------------------------------------------------------------------
+        | Hanya Superadmin
+        |--------------------------------------------------------------------------
+        */
+
+        if ($user['role'] !== 'superadmin') {
+
+            Flash::error(
+                'Anda tidak memiliki akses ke halaman admin.'
+            );
+
+            Response::redirect('/superadmin/login');
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Verifikasi password
+        |--------------------------------------------------------------------------
+        */
+
+        if (!password_verify($password, $user['password'])) {
 
             Flash::error(
                 'Username atau password salah.'
             );
 
-            Response::redirect('/admin/login');
+            Response::redirect('/superadmin/login');
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Update waktu login
+        |--------------------------------------------------------------------------
+        */
 
         $userModel->update(
             $user['id'],
@@ -86,15 +132,24 @@ class LoginController extends Controller
             ]
         );
 
+        /*
+        |--------------------------------------------------------------------------
+        | Simpan session
+        |--------------------------------------------------------------------------
+        */
+
         Auth::login($user);
 
         Flash::success(
             'Selamat datang, ' . $user['nama']
         );
 
-        Response::redirect('/admin/dashboard');
+        Response::redirect('/superadmin/dashboard');
     }
 
+    /**
+     * Logout
+     */
     public function logout(): void
     {
         Auth::logout();
@@ -103,6 +158,6 @@ class LoginController extends Controller
             'Anda berhasil logout.'
         );
 
-        Response::redirect('/admin/login');
+        Response::redirect('/superadmin/login');
     }
 }

@@ -8,8 +8,24 @@ class KontakModel extends Model
 {
     protected string $table = 'kontak';
 
-    public function getKontak(): ?array
+    protected array $fillable = [
+        'alamat',
+        'email',
+        'telepon',
+        'whatsapp',
+        'maps',
+        'latitude',
+        'longitude',
+        'jam_operasional',
+        'instagram',
+        'facebook',
+        'youtube',
+        'tiktok',
+        'website'
+    ];
+
+    public function getKontak(): array
     {
-        return $this->first();
+        return $this->first() ?? [];
     }
 }

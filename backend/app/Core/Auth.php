@@ -59,14 +59,14 @@ class Auth
     public static function requireLogin(): void
     {
         if (!self::check()) {
-            Response::redirect('/admin/login');
+            Response::redirect('/superadmin/login');
         }
     }
 
     public static function guest(): void
     {
         if (self::check()) {
-            Response::redirect('/admin/dashboard');
+            Response::redirect('/superadmin/dashboard');
         }
     }
 }

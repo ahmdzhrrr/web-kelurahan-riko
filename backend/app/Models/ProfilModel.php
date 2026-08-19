@@ -8,8 +8,16 @@ class ProfilModel extends Model
 {
     protected string $table = 'profil';
 
-    public function getProfil(): ?array
+    protected array $fillable = [
+        'judul',
+        'isi',
+        'gambar',
+        'video_url',
+        'video_file',
+    ];
+
+    public function getProfil(): array
     {
-        return $this->first();
+        return $this->first() ?? [];
     }
 }

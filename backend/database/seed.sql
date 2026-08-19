@@ -14,7 +14,7 @@ VALUES
 (
     'Administrator',
     'admin',
-    '$2a$12$mO5/Q1gOSx6563N02lYFOucAOpuuDm9Rlw3AMYUtnBRKvGbcx9QBi',
+    'kelurahanriko',
     'superadmin',
     'admin@kelurahanriko.id',
     TRUE,

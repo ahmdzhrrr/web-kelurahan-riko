@@ -11,9 +11,8 @@ class UserModel extends Model
     protected array $fillable = [
         'nama',
         'username',
-        'password',
         'email',
-        'role'
+        'last_login'
     ];
 
     public function findByUsername(string $username): ?array

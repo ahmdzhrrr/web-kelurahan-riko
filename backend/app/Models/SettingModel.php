@@ -8,8 +8,27 @@ class SettingModel extends Model
 {
     protected string $table = 'settings';
 
-    public function getSetting(): ?array
+    protected array $fillable = [
+        'site_name',
+        'site_subtitle',
+        'tagline',
+        'logo',
+        'favicon',
+        'hero_title',
+        'hero_subtitle',
+        'footer',
+        'copyright',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+        'maintenance_mode',
+        'kecamatan',
+        'tipologi',
+        'luas_wilayah'
+    ];
+
+    public function getSetting(): array
     {
-        return $this->first();
+        return $this->first() ?? [];
     }
 }

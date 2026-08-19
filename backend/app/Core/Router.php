@@ -4,6 +4,8 @@ namespace App\Core;
 
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
+use App\Middleware\SuperadminMiddleware;
+use App\middleware\MaintenanceMiddleware;
 
 class Router
 {
@@ -54,50 +56,114 @@ class Router
     }
 
     public function dispatch(): void
-    {
-        $method = $_SERVER['REQUEST_METHOD'];
+{
+    $method = $_SERVER['REQUEST_METHOD'];
 
-        $uri = parse_url(
-            $_SERVER['REQUEST_URI'],
-            PHP_URL_PATH
-        );
+    $uri = parse_url(
+        $_SERVER['REQUEST_URI'],
+        PHP_URL_PATH
+    );
 
-        $uri = rtrim($uri, '/');
+    $uri = rtrim($uri, '/');
 
-        if ($uri === '') {
-            $uri = '/';
-        }
+    if ($uri === '') {
+        $uri = '/';
+    }
 
-        if (!isset($this->routes[$method][$uri])) {
+    $route = null;
+    $params = [];
 
-            Response::notFound();
+    if (isset($this->routes[$method][$uri])) {
 
-        }
-
+        // Route tanpa parameter
         $route = $this->routes[$method][$uri];
 
-        foreach ($route['middleware'] as $middleware) {
+    } else {
 
-            switch ($middleware) {
 
-                case 'auth':
-                    (new AuthMiddleware())->handle();
-                    break;
+        foreach ($this->routes[$method] ?? [] as $routeUri => $routeData) {
 
-                case 'guest':
-                    (new GuestMiddleware())->handle();
-                    break;
-
+            if (!str_contains($routeUri, '{')) {
+                continue;
             }
 
+            // Ubah {slug} menjadi bagian regex
+            $pattern = preg_replace(
+                '/\{([^}]+)\}/',
+                '([^/]+)',
+                $routeUri
+            );
+
+            $pattern = '#^' . $pattern . '$#';
+
+            if (preg_match($pattern, $uri, $matches)) {
+
+                $route = $routeData;
+
+                // Ambil nama parameter
+                preg_match_all(
+                    '/\{([^}]+)\}/',
+                    $routeUri,
+                    $paramNames
+                );
+
+                foreach ($paramNames[1] as $index => $name) {
+
+                    $params[$name] = $matches[$index + 1];
+
+                }
+
+                break;
+            }
         }
-
-        [$controller, $action] = $route['action'];
-
-        $controller = new $controller();
-
-        call_user_func([$controller, $action]);
     }
+
+    if ($route === null) {
+
+        Response::notFound();
+
+        return;
+    }
+
+    foreach ($route['middleware'] as $middleware) {
+
+        switch ($middleware) {
+    
+            case 'auth':
+    
+                (new AuthMiddleware())->handle();
+    
+                break;
+    
+            case 'guest':
+    
+                (new GuestMiddleware())->handle();
+    
+                break;
+    
+            case 'superadmin':
+    
+                (new SuperadminMiddleware())->handle();
+    
+                break;
+
+            case 'maintenance':
+
+                (new MaintenanceMiddleware())->handle();
+        
+                break;
+        }
+    }
+
+    [$controller, $action] = $route['action'];
+
+    $controller = new $controller();
+
+    call_user_func_array(
+        [$controller, $action],
+        array_values($params)
+    );
+}
 
     public function routes(): array
     {
